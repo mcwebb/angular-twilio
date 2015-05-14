@@ -32,7 +32,7 @@ angular.module('mcwebb.twilio', [])
 		}
 	};
 
-	this.$get = function ($window, $http, $q) {
+	this.$get = function ($window, $http) {
 		var credentialsB64,
 			internal = {};
 
@@ -48,7 +48,8 @@ angular.module('mcwebb.twilio', [])
 
 		internal.transformRequest = function (data, getHeaders) {
 			var headers = getHeaders();
-			headers[ "Content-type" ] = "application/x-www-form-urlencoded; charset=utf-8";
+			delete headers['Content-Type'];
+			headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8';
 
 			return internal.serializeData(data);
 		};
@@ -66,7 +67,7 @@ angular.module('mcwebb.twilio', [])
 				var value = data[name];
 				buffer.push(
 					encodeURIComponent(name) +
-					"=" +
+					'=' +
 					encodeURIComponent((value === null) ? '' : value )
 				);
 			}
