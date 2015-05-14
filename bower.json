@@ -1,0 +1,13 @@
+{
+  "name": "angular-twilio",
+  "description": "An Angular wrapper for Twilio's REST API",
+  "main": "./angular-twilio.js",
+  "ignore": [],
+  "author": "Matthew Webb",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ]
+}
