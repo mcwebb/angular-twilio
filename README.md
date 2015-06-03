@@ -17,6 +17,7 @@ angular.module('xxxx', ['mcwebb.twilio'])
 
 ## Example Use
 ### Set up
+N.B. it's probably not a good idea to use this in a public website since your credentials are world readable.
 ```js
 angular.module('xxxx')
 .config(function (TwilioProvider) {
