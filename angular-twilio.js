@@ -47,10 +47,6 @@ angular.module('mcwebb.twilio', [])
 		};
 
 		internal.transformRequest = function (data, getHeaders) {
-			return internal.serializeData(data);
-		};
-
-		internal.serializeData = function (data) {
 			// If this is not an object, defer to native stringification.
 			if (!angular.isObject(data)) {
 				return (data === null) ? '' : data.toString();
@@ -94,10 +90,13 @@ angular.module('mcwebb.twilio', [])
 					'Authorization': 'Basic ' + credentialsB64
 				}
 			};
-			if (data) request.data = data;
-			if (method !== 'GET' || method !== 'DELETE') {
+			
+			if (method === 'POST' || method === 'PUT') {
+				if (data) request.data = data;
 				request.transformRequest = internal.transformRequest;
 				request.headers['content-type'] = 'application/x-www-form-urlencoded; charset=utf-8';
+			} else if (data) {
+				request.params = data;
 			}
 			return $http(request);
 		};
