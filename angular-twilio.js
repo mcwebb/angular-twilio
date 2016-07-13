@@ -49,7 +49,7 @@ angular.module('mcwebb.twilio', [])
 		internal.transformRequest = function (data, getHeaders) {
 			var headers = getHeaders();
 			delete headers['Content-Type'];
-			headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8';
+			headers['content-type'] = 'application/x-www-form-urlencoded; charset=utf-8';
 
 			return internal.serializeData(data);
 		};
