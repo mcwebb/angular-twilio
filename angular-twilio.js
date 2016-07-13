@@ -47,10 +47,6 @@ angular.module('mcwebb.twilio', [])
 		};
 
 		internal.transformRequest = function (data, getHeaders) {
-			var headers = getHeaders();
-			delete headers['Content-Type'];
-			headers['content-type'] = 'application/x-www-form-urlencoded; charset=utf-8';
-
 			return internal.serializeData(data);
 		};
 
@@ -99,9 +95,10 @@ angular.module('mcwebb.twilio', [])
 				}
 			};
 			if (data) request.data = data;
-			if (method !== 'GET' || method !== 'DELETE')
+			if (method !== 'GET' || method !== 'DELETE') {
 				request.transformRequest = internal.transformRequest;
-
+				request.headers['content-type'] = 'application/x-www-form-urlencoded; charset=utf-8';
+			}
 			return $http(request);
 		};
 
