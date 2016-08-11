@@ -35,9 +35,9 @@ angular.module('xxxx')
 .controller('ExampleController', function ExampleController($scope, Twilio) {
 	$scope.submit = function () {
 		Twilio.create('Messages', {
-			from: '+12402926537',
-			to: '+16175551212',
-			body: 'This is a test! yay!'
+			From: '+12402926537',
+			To: '+16175551212',
+			Body: 'This is a test! yay!'
 		})
 		.success(function (data, status, headers, config) {
 			// Success - do something
